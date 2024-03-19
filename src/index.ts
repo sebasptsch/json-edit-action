@@ -1,6 +1,7 @@
 import * as core from "@actions/core";
-import * as toml from "smol-toml";
 import fs from "node:fs";
+
+type UnknownJson = Record<string, unknown>
 
 try {
   const path = core.getInput("path", {
@@ -21,30 +22,30 @@ try {
     trimWhitespace: true,
   });
 
-  const parsedToml = toml.parse(file);
+  const parsedToml = JSON.parse(file);
 
   // If the key is a string, we can just set it directly
   // split the key by '.' and iterate through the keys to set the value
 
   const keys = key.split(".");
-  let currentObject = parsedToml as Record<string, toml.TomlPrimitive>;
+  let currentObject = parsedToml as UnknownJson
   for (let i = 0; i < keys.length - 1; i++) {
     if (currentObject[keys[i]] === undefined) {
       currentObject[keys[i]] = {};
     }
-    currentObject = currentObject[keys[i]] as Record<
-      string,
-      toml.TomlPrimitive
-    >;
+    currentObject = currentObject[keys[i]] as UnknownJson;
   }
   currentObject[keys[keys.length - 1]] = value;
-  core.setOutput("result", toml.stringify(parsedToml));
+
+  const newFile = JSON.stringify(parsedToml, null, 2);
+
+
 
   // Write the file
-  fs.writeFileSync(path, toml.stringify(parsedToml));
+  fs.writeFileSync(path, newFile);
 
-  // Set the output
-  core.setOutput("result", toml.stringify(parsedToml));
+  core.setOutput("result", newFile);
+
 } catch (error) {
   if (error instanceof Error) {
     core.setFailed(error.message);
