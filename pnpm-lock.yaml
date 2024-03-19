@@ -20,9 +20,6 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.29
     version: 20.11.29
-  smol-toml:
-    specifier: ^1.1.4
-    version: 1.1.4
   tsup:
     specifier: ^8.0.2
     version: 8.0.2(typescript@5.4.2)
@@ -2618,11 +2615,6 @@ packages:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
       yargs: 15.4.1
-    dev: true
-
-  /smol-toml@1.1.4:
-    resolution: {integrity: sha512-Y0OT8HezWsTNeEOSVxDnKOW/AyNXHQ4BwJNbAXlLTF5wWsBvrcHhIkE5Rf8kQMLmgf7nDX3PVOlgC6/Aiggu3Q==}
-    engines: {node: '>= 18', pnpm: '>= 8'}
     dev: true
 
   /source-map@0.8.0-beta.0:
