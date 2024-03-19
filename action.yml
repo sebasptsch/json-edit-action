@@ -1,8 +1,8 @@
-name: 'Edit Toml'
-description: 'Edit a toml key val field'
+name: 'Edit JSON'
+description: 'Edit a JSON key val field'
 inputs:
   path:
-    description: 'The path to the toml file'
+    description: 'The path to the JSON file'
     required: true
   key:
     description: 'The key to edit'
