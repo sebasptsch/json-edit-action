@@ -14,7 +14,7 @@
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "devDependencies": {
-    "@biomejs/biome": "1.6.1",
+    "@biomejs/biome": "1.6.4",
     "@changesets/cli": "^2.27.1",
     "@types/node": "^20.11.29",
     "tsup": "^8.0.2",
